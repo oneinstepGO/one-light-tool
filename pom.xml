@@ -4,7 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.oneinstep</groupId>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-parent</artifactId>
+        <version>3.1.2</version>
+    </parent>
+
+    <groupId>com.oneinstep.light</groupId>
     <artifactId>one-light-tool</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -12,20 +18,24 @@
     <properties>
         <!-- lombok -->
         <lombok.version>1.18.24</lombok.version>
-        <spring.version>5.2.15.RELEASE</spring.version>
-        <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
+        <spring.version>6.0.11</spring.version>
+        <spring-boot.version>3.1.3</spring-boot.version>
         <!-- mapstruct -->
         <mapstruct.version>1.5.3.Final</mapstruct.version>
         <lombok.mapstruct.binding.version>0.2.0</lombok.mapstruct.binding.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <!-- redisson -->
-        <redisson.version>3.17.3</redisson.version>
-        
+        <redisson-spring-boot-starter.version>3.23.3</redisson-spring-boot-starter.version>
         <!-- mybatis -->
         <mybatis.version>3.5.7</mybatis.version>
-        <aspectjweaver.version>1.9.6</aspectjweaver.version>
+        <aspectjweaver.version>1.9.19</aspectjweaver.version>
         <!-- 线程间上下文传递 -->
         <ttl.version>2.14.2</ttl.version>
+        <pagehelper.version>5.3.2</pagehelper.version>
+        <validation-api.version>2.0.1.Final</validation-api.version>
+        <collections4.version>4.4</collections4.version>
+        <guava.version>32.1.2-jre</guava.version>
+        <commons-io.version>2.7</commons-io.version>
         <!-- powermock 测试工具 -->
         <powermock.version>2.0.0</powermock.version>
         <!-- junit-platform 测试工具 -->
@@ -40,14 +50,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
             <version>${spring-boot.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- 常用工具包 -->
@@ -55,31 +63,28 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
-      
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-      
+            <version>${commons-io.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- aop -->
@@ -87,14 +92,13 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectjweaver.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- pagehelper 分页工具 -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
-            <scope>provided</scope>
+            <version>${pagehelper.version}</version>
         </dependency>
 
         <!-- mybatis -->
@@ -102,22 +106,22 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>${mybatis.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- 注解参数校验支持 -->
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <scope>provided</scope>
+            <version>${validation-api.version}</version>
         </dependency>
 
         <!-- redisson -->
         <dependency>
             <groupId>org.redisson</groupId>
-            <artifactId>redisson</artifactId>
-            <version>${redisson.version}</version>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+            <version>${redisson-spring-boot-starter.version}</version>
         </dependency>
+
 
         <!-- 对象转换 -->
         <dependency>
@@ -137,6 +141,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
+            <version>${collections4.version}</version>
         </dependency>
 
         <!-- 单测工具  start-->
@@ -179,6 +184,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.1</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
